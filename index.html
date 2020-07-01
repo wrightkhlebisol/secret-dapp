@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Dapp</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>Ethereum Secret Messenger</h1>
+      <hr />
+      <label for="secret"
+        >This site writes a secret message to the Ethereum</label
+      >
+
+      <input type="text" id="secret" />
+
+      <button>Set secret message</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      // Connect the web3 provider
+      if (typeof web3 !== undefined) {
+          web3 = new Web3(web3.currentProvider);
+      } else {
+          web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
+      }
+      let vue = new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>
