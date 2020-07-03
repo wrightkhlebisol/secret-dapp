@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Secret Dapp</title>
     <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.9/web3.min.js"></script>
+
 </head>
 
 <body>
@@ -29,8 +31,11 @@
         web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
         //   }
 
+        console.log(web3.eth.getAccounts().then(accounts => console.log(accounts[0])))
         // Set default Account
         web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        console.log(web3.eth.defaultAccount)
 
 
 
@@ -53,7 +58,7 @@
                 }
             },
             mounted() {
-                console.log(web3.eth);
+                // console.log(web3.eth);
             },
         });
     </script>
