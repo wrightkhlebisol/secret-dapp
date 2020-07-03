@@ -18,7 +18,7 @@
 
         <input type="text" id="secret" v-model="message" />
 
-        <button @click="sendToChain">Set secret message</button>
+        <button @click="sendToChain">{{status}}</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -64,29 +64,28 @@
             }
         ], '0x5d1F425935Da1dA2106A4bb9cBd7c91f828d67ab');
 
-        console.log(RemixContract.methods);
-
-
-
-
-
-
         // Vue setup
         let vue = new Vue({
             el: "#app",
             data() {
                 return {
-                    message: ""
+                    message: "",
+                    status: "Set secret message"
                 }
             },
             methods: {
                 sendToChain() {
-
-                    console.log(web3);
-                }
+                    if (this.message !== "") {
+                        this.status = "...Sending to the Network"
+                        console.log(RemixContract.methods.setMeesage(this.message));
+                        this.status = "Secret message sent"
+                    } else {
+                        this.status = "😨 Enter a value"
+                    }
+                },
             },
             mounted() {
-                // console.log(web3.eth);
+                console.log(RemixContract.methods);
             },
         });
     </script>
