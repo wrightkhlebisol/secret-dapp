@@ -37,6 +37,34 @@
         }).catch(e => console.log(e.response))
 
 
+        // Get contract ABI
+        let RemixContract = new web3.eth.Contract([{
+                "constant": false,
+                "inputs": [{
+                    "name": "x",
+                    "type": "string"
+                }],
+                "name": "setMessage",
+                "outputs": [],
+                "payable": false,
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "constant": true,
+                "inputs": [],
+                "name": "getMessage",
+                "outputs": [{
+                    "name": "",
+                    "type": "string"
+                }],
+                "payable": false,
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ], '0x5d1F425935Da1dA2106A4bb9cBd7c91f828d67ab');
+
+        console.log(RemixContract.methods);
 
 
 
@@ -58,7 +86,7 @@
                 }
             },
             mounted() {
-                console.log(web3.eth);
+                // console.log(web3.eth);
             },
         });
     </script>
