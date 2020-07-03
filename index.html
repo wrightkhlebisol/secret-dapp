@@ -32,10 +32,9 @@
         //   }
 
         // Get all Accounts and Set first as default Account
-        web3.eth.getAccounts().then(accounts => {
-            web3.eth.defaultAccount = accounts[0];
-        }).catch(e => console.log(e.response))
+        web3.eth.getAccounts().then(accounts => {}).catch(e => console.log(e.response))
 
+        web3.eth.defaultAccount = '0x60A054044B52DeC7b3B4A87F752f2682A57B8d4E';
 
         // Get contract ABI
         let RemixContract = new web3.eth.Contract([{
@@ -62,7 +61,7 @@
                 "stateMutability": "view",
                 "type": "function"
             }
-        ], '0x5d1F425935Da1dA2106A4bb9cBd7c91f828d67ab');
+        ], '0x60A054044B52DeC7b3B4A87F752f2682A57B8d4E');
 
         // Vue setup
         let vue = new Vue({
@@ -77,7 +76,9 @@
                 sendToChain() {
                     if (this.message !== "") {
                         this.status = "...Sending to the Network"
-                        console.log(RemixContract.methods.setMessage(this.message).send());
+                        console.log(RemixContract.methods.setMessage(this.message).send({
+                            from: '0x60A054044B52DeC7b3B4A87F752f2682A57B8d4E'
+                        }));
                         this.status = "Secret message sent"
                     } else {
                         this.status = "😨 Enter a value"
