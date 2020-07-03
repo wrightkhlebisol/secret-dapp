@@ -31,11 +31,11 @@
         web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'));
         //   }
 
-        console.log(web3.eth.getAccounts().then(accounts => console.log(accounts[0])))
-        // Set default Account
-        web3.eth.defaultAccount = web3.eth.accounts[0];
+        // Get all Accounts and Set first as default Account
+        web3.eth.getAccounts().then(accounts => {
+            web3.eth.defaultAccount = accounts[0];
+        }).catch(e => console.log(e.response))
 
-        console.log(web3.eth.defaultAccount)
 
 
 
@@ -58,7 +58,7 @@
                 }
             },
             mounted() {
-                // console.log(web3.eth);
+                console.log(web3.eth);
             },
         });
     </script>
