@@ -77,7 +77,7 @@
                 sendToChain() {
                     if (this.message !== "") {
                         this.status = "...Sending to the Network"
-                        console.log(RemixContract.methods.setMessage(this.message));
+                        console.log(RemixContract.methods.setMessage(this.message).send());
                         this.status = "Secret message sent"
                     } else {
                         this.status = "😨 Enter a value"
