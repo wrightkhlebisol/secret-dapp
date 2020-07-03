@@ -19,7 +19,7 @@
         <button @click="sendToChain">Set secret message</button>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <script>
         // Connect the web3 provider
@@ -30,8 +30,15 @@
         //   }
 
         // Set default Account
-        console.log(web3.eth.accounts)
+        web3.eth.defaultAccount = web3.eth.accounts[0];
 
+
+
+
+
+
+
+        // Vue setup
         let vue = new Vue({
             el: "#app",
             data() {
