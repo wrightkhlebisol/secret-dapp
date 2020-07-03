@@ -30,7 +30,7 @@
         //   }
 
         // Set default Account
-        console.log(web3.defaultAccount)
+        console.log(web3.eth.accounts)
 
         let vue = new Vue({
             el: "#app",
@@ -46,7 +46,7 @@
                 }
             },
             mounted() {
-                console.log(web3);
+                console.log(web3.eth);
             },
         });
     </script>
